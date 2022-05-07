@@ -1,0 +1,99 @@
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/547994bb66.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap');
+
+        body {
+            font-family: 'Stint Ultra Condensed', cursive;
+            background: whitesmoke;
+        }
+
+        .pl {
+            margin-left: 0px;
+            list-style: none;
+        }
+
+        .pl li {
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+
+
+<div class="container mt-5    d-flex justify-content-center align-items-center">
+    <div class=" " style="display:center; justify-content: center;width:20%; ">
+        {% if user.image %}
+            <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
+                 alt="" style="width: 40px;border-radius: 100%;">
+        {% else %}
+            <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                 alt="" style="width: 40px;border-radius: 100%;">
+        {% endif %}
+    </div>
+
+    <div class="">
+        <div class="d-flex align-items-center w-100">
+            <div>
+                <h1 class="m-5">{{ user.socialaccount_set.all.0.extra_data.name }}</h1>
+            </div>
+        </div>
+
+        <div class="w-100">
+            <ul class="d-flex pl">
+                <li>
+                    3 Публикации
+                </li>
+                <li>
+                    450000 подписчиков
+                </li>
+                <li>
+                    68 подписок
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1>Публикации</h1>
+    </div>
+    4
+</div>
+
+<div class="container w-100">
+    <div class=" d-flex justify-content-between">
+        <div class="mt-5 mb-3">
+            <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                 alt="" width="300px">
+        </div>
+        <div class="mt-5 mb-3">
+            <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                 alt="" width="300px">
+        </div>
+        <div class="mt-5 mb-3">
+            <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                 alt="" width="300px">
+        </div>
+
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/547994bb66.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Condensed&display=swap');
+
+        body {
+            font-family: 'Stint Ultra Condensed', cursive;
+            background: whitesmoke;
+        }
+
+        .scroll {
+            overflow-y: scroll;
+            height: 100%;
+            width: 80%;
+        }
+
+        .pl {
+            margin-left: 0px;
+            list-style: none;
+        }
+
+        .pl li {
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="d-flex container">
+    {% block content %}
+    {% endblock content %}
+    <div class=" w-50" style="background: none !important;">
+        <div>
+            <div class="d-flex align-items-center pt-5">
+                <div class="m-3">
+                    <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                         alt="" style="width: 40px;border-radius: 100%;border:2px solid red;cursor: pointer;">
+                </div>
+                <div class="pt-3">
+                    <p style="font-size:20px">Brett Pitt</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p class="p-4 text-secondary" style="font-size:20px">Рекомендации для вас </p>
+        </div>
+
+        <div class="d-flex align-items-center pt-0">
+            <div class="m-3">
+                <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                     alt="" style="width: 40px;border-radius: 100%;border:2px solid red;cursor: pointer;">
+            </div>
+            <div class="pt-3">
+                <p style="font-size:20px">Jason statham</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center pt-0">
+            <div class="m-3">
+                <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                     alt="" style="width: 40px;border-radius: 100%;border:2px solid red;cursor: pointer;">
+            </div>
+            <div class="pt-3">
+                <p style="font-size:20px">Jackie Chan</p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center pt-0">
+            <div class="m-3">
+                <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                     alt="" style="width: 40px;border-radius: 100%;border:2px solid red;cursor: pointer;">
+            </div>
+            <div class="pt-3">
+                <p style="font-size:20px">Bruce LEe</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+</body>
+</html>

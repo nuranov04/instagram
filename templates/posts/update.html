@@ -1,0 +1,9 @@
+{% extends 'index.html' %} {% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="md-3">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

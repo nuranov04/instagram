@@ -1,0 +1,92 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class="container mt-5 scroll">
+        {% for post in posts %}
+            <div class="col-xl-12 mt-5">
+                <div class="card">
+                    <div class="card-header p-1" style="background: white !important;">
+                        <div class="d-flex align-items-center">
+                            <div class="m-3">
+                                <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                                     alt=""
+                                     style="width: 40px;border-radius: 100%;border:2px solid red;cursor: pointer;">
+                            </div>
+                            <div class="pt-3">
+                                <p style="font-size:20px">{{ post.owner.username }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                {% for image in post.post_image.all %}
+                                    <div class="carousel-item active">
+                                        <a href="{% url 'detail' post.id %}">
+                                            <img src="{{ image.image.url }}"
+                                             class="d-block w-100" alt="..." style="height: 60vh;">
+                                        </a>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ image.image.url }}"
+                                             class="d-block w-100" alt="..." style="height: 60vh;">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="d-flex p-3 justify-content-between" style="width: 150px;">
+                            {% csrf_token %}
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="post_id" value="{{ post.id }}">
+                                <button name="like" type="submit" class="far fa-heart">
+                                </button>
+                            </form>
+                            <p>{{ post.likes_post.all.count }}</p>
+
+                            <!-- <input type="button"  name="like" class="far fa-heart" style="font-size:25px"></input> -->
+                            <i class="far fa-comment" style="font-size:25px"></i>
+                            <i class="far fa-paper-plane" style="font-size:25px"></i>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            {{ post.description| truncatewords:10 }}
+                        </div>
+                        {% for comment in post.comment_post.all %}
+                        <div class="comments p-3">
+                            {{ comment.text }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer p-0 d-flex">
+                        <form method="post" class="form-control">
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            <input type="text" name="comment_text" class="form-control"
+                                   placeholder="Оставьте комментарии...">
+                            <button type="submit" name="comment" class="btn btn-danger">
+                                Comment
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

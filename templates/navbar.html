@@ -1,0 +1,45 @@
+{% load socialaccount %}
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light card" style="background: white !important;">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <a href="{% url 'index' %}" class="navbar-brand " style="font-size: 35px;">Instagram</a>
+                <div>
+                    <a href="{% url 'create' %}" class="btn btn-danger">Create</a>
+                </div>
+                {% if user.is_authenticated %}
+                    <h4>Welcome, {{ user.username }} !</h4>
+                    <div>
+                        <a href="{% url 'logout' %}" class="btn btn-danger">Log out</a>
+                    </div>
+                {% else %}
+                    <a class="btn btn-success" href="{% provider_login_url 'google' %}">Login with Google</a>
+                    <a class="btn btn-success" href="{% url 'account_login' %}"> Вход </a>
+                    <a class="btn btn-success" href="{% url 'account_signup' %}"> Регистрация </a>
+                {% endif %}
+                <form action="{% url 'index' %}" style="display: flex; justify-content: space-between;">
+                        {% csrf_token %}
+                        <input name="words" type="text" class="form-control m-3"  id="search_input"  placeholder="search">
+                        <button name="key_word" type="submit" class="btn btn-outline-success m-3">enter</button>
+                </form>
+
+                <div class="d-flex align-items-center justify-content-between" style="width: 200px;">
+                    <i class="fa fa-home" style="font-size: 25px;"></i>
+                    <i class="far fa-heart" style="font-size:25px"></i>
+                    {% if user.id %}
+                        <a href="{% url 'profile' user.id %}">
+                            {% if user.image %}
+                                <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}"
+                                     alt="" style="width: 40px;border-radius: 100%;">
+                            {% else %}
+                                <img src="https://icdn.lenta.ru/images/2021/04/15/14/20210415144216836/square_1024_36291bbdbfc0ce89b6635a2702b07a1c.jpg"
+                                     alt="" style="width: 40px;border-radius: 100%;">
+                            {% endif %}
+                        </a>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
